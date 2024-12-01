@@ -1,8 +1,16 @@
+import "./App.css";
+import Layout from "./layout/Layout";
+import AuthProvider from "./providers/AuthProvider";
+import AppRouter from "./router/AppRouter";
 
-export default function App() {
+function App() {
   return (
-    <h1>
-      Hello
-    </h1>
-  )
+    <>
+      <AuthProvider>
+        <Layout children={<AppRouter />} />
+      </AuthProvider>
+    </>
+  );
 }
+
+export default App;
