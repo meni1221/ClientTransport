@@ -42,16 +42,22 @@ export const LoginPage = () => {
       <PageHeader title="Login" subtitle="Welcome to the Login page" />
       <div>
         <button
-          onClick={() => handleURLChange("drivers")}
-          className={currentURL === "drivers" ? "selected" : ""}
+          onClick={() => handleURLChange("users")}
+          className={currentURL === "users" ? "selected" : ""}
         >
-          drivers
+          driver
         </button>
         <button
           onClick={() => handleURLChange("admin")}
           className={currentURL === "admin" ? "selected" : ""}
         >
           admin
+        </button>
+        <button
+          onClick={() => handleURLChange("passenger")}
+          className={currentURL === "passenger" ? "selected" : ""}
+        >
+          passenger
         </button>
       </div>
 
