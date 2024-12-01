@@ -11,7 +11,7 @@ body {
 }
 
 header {
-  background-color: #dec2ff;
+  background-color: #ffa600;
   color: white;
   text-align: center;
   font-weight: 600;
@@ -36,7 +36,7 @@ main {
 }
 
 footer {
-  background-color: #dec2ff;
+  background-color: #ffa600;
   color: black;
   text-align: center;
   padding: 20px;
@@ -78,7 +78,7 @@ textarea {
 }
 
 button {
-  background-color: #dec2ff;
+  background-color: #ffa600;
   color: white;
   border: none;
   border-radius: 5px;
@@ -89,13 +89,13 @@ button {
 }
 
 button:hover {
-  background-color: #ff9ae6;
+  background-color: #b87800;
   color: white;
 }
 
 button.selected {
-  border: 2px solid #dec2ff;
-  background-color: #ff9ae6;
+  border: 2px solid #fff7e9;
+  background-color: #ffa600;
   color: white;
   font-weight: bold;
 }
@@ -141,7 +141,7 @@ button.selected:hover {
   text-align: center;
   padding: 20px;
   background-color: #f9f7fc;
-  border: 1px solid #e2d9f3;
+  border: 1px solid #ffa609;
   border-radius: 8px;
   margin: 20px auto;
   width: 600px;
@@ -156,14 +156,14 @@ button.selected:hover {
 .page-header__title {
   font-size: 2rem;
   margin: 0;
-  color: #5e3a8c;
+  color: #ffa600;
   font-weight: 600;
 }
 
 .page-header__subtitle {
   font-size: 1rem;
   margin: 5px 0 0;
-  color: #8c7aab;
+  color: #794e00;
   font-weight: 400;
 }
 .logo {
@@ -184,14 +184,14 @@ button.selected:hover {
 }
 
 .nav .nav-link:hover {
-  border-bottom: 5px solid #ff9ae6;
+  border-bottom: 5px solid #ffa600;
   font-weight: bold;
   transition: 0.5s;
 }
 
 .active {
   color: #fff;
-  border-bottom: 5px solid #ff9ae6;
+  border-bottom: 5px solid #ffa600;
   font-weight: bold;
 }
 
@@ -229,12 +229,12 @@ button.selected:hover {
   border-radius: 50%;
   object-fit: cover;
   margin-bottom: 15px;
-  border: 3px solid #dec2ff;
+  border: 3px solid #ffa600;
 }
 
 .user-card h2 {
   font-size: 1.5rem;
-  color: #5e3a8c;
+  color: #8f620f;
   margin-bottom: 10px;
 }
 
@@ -248,7 +248,7 @@ button.selected:hover {
 .user-card button {
   margin-top: 15px;
   padding: 10px 20px;
-  background-color: #ff9ae6;
+  background-color: #ffa600;
   color: white;
   border: none;
   border-radius: 5px;
@@ -258,7 +258,7 @@ button.selected:hover {
 }
 
 .user-card button:hover {
-  background-color: #e284d8;
+  background-color: #ffa600;
 }
 .cta-section {
   text-align: center;
@@ -291,7 +291,7 @@ button.selected:hover {
 .developer-card:hover {
   transform: translateY(-5px);
   transition: 1s;
-  background-color: #dec2ff;
+  background-color: #ffa600;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
@@ -354,7 +354,7 @@ header h1 {
 
 .edit-btn {
   display: inline-block;
-  background: #6366f1;
+  background: #ffa600;
   color: white;
   padding: 0.8rem 1.5rem;
   border-radius: 8px;
@@ -484,7 +484,7 @@ header h1 {
 
 .user-card h2 {
   font-size: 1.5rem;
-  color: #5e3a8c;
+  color: #ffa600;
   margin-bottom: 10px;
 }
 
@@ -519,17 +519,17 @@ header h1 {
 }
 
 .user-card button:hover {
-  background-color: #ff9ae6;
+  background-color: #ffa600;
 }
 
 .status-btn {
-  background-color: #dec2ff !important;
+  background-color: #ffa600 !important;
   width: 100% !important;
   margin-top: 20px !important;
 }
 
 .status-btn:hover {
-  background-color: #ff9ae6 !important;
+  background-color: #ffa600 !important;
 }
 
 .status-btn.waiting {
@@ -548,7 +548,7 @@ header h1 {
 }
 
 .status-btn.rejected {
-  background-color: #ffb6c1 !important;
+  background-color: #ffa600 !important;
   color: black;
 }
 
