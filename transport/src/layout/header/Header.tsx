@@ -19,7 +19,7 @@ export default function Header() {
             (tokenRole === "babysitter" ? (
               <TopNavLink to="/babysitter">Dashboard</TopNavLink>
             ) : (
-              <TopNavLink to="/parent">Babysitters</TopNavLink>
+              <TopNavLink to="/admin">users</TopNavLink>
             ))}
         </div>
 
@@ -32,7 +32,6 @@ export default function Header() {
         {!user && (
           <div className="nav right-side">
             <TopNavLink to="/login">Login</TopNavLink>
-            <TopNavLink to="/register">Register</TopNavLink>
           </div>
         )}
 

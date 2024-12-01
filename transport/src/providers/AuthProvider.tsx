@@ -1,9 +1,13 @@
-import { createContext, ReactNode, useEffect, useState } from "react";
-import { IParents } from "../interface/parents";
-import IBabysitter from "../interface/BabySitter";
+import { createContext, ReactNode, useState } from "react";
 import useFetch from "../hooks/useFetch";
 import { useNavigate } from "react-router-dom";
-import Cookies from "js-cookie";
+
+export interface IUser extends Document {
+  name: string;
+  email: string;
+  password: string;
+  role: "driver" | "admin" | "passenger";
+}
 
 interface UserDTO {
   email: string;
@@ -11,7 +15,7 @@ interface UserDTO {
 }
 
 interface AuthContextType {
-  user: IParents | IBabysitter | null;
+  user: IUser | null;
   error: string | null;
   login: (user: UserDTO, urlPath: string) => Promise<boolean>;
   logout: () => Promise<boolean>;
@@ -21,56 +25,11 @@ interface AuthContextType {
 export const AuthContext = createContext<AuthContextType | null>(null);
 
 export default function AuthProvider({ children }: { children: ReactNode }) {
-  const { POST, VerifyToken } = useFetch("http://localhost:7700");
-  const [user, setUser] = useState<IParents | IBabysitter | null>(null);
+  const { POST } = useFetch("http://localhost:7891");
+  const [user, setUser] = useState<IUser | null>(null);
   const [error, setError] = useState<string | null>(null);
 
   const navigate = useNavigate();
-
-  useEffect(() => {
-    const token = Cookies.get("auth_token");
-    const tokenRole = Cookies.get("role");
-
-    const verifyAndLogin = async () => {
-      if (token) {
-        try {
-          const decodedToken = await VerifyToken();
-          if (!decodedToken?.user?.email || !decodedToken?.user?.password) {
-            throw new Error("Invalid token data");
-          }
-
-          const { email, password } = decodedToken.user;
-          let success = false;
-          try {
-            const loginPath =
-              tokenRole === "babysitter" ? "babysitter" : "parent";
-            success = await login({ email, password }, loginPath);
-          } catch (loginError) {
-            console.error("Login error:", loginError);
-            success = false;
-          }
-
-          if (!success) {
-            handleLogout();
-          }
-        } catch (error) {
-          console.error("Token verification error:", error);
-          handleLogout();
-        }
-      } else {
-        setUser(null);
-      }
-    };
-
-    const handleLogout = () => {
-      setUser(null);
-      Cookies.remove("auth_token");
-      Cookies.remove("role");
-      navigate("/login");
-    };
-
-    verifyAndLogin();
-  }, []);
 
   const clearError = () => setError(null);
 
@@ -83,9 +42,7 @@ export default function AuthProvider({ children }: { children: ReactNode }) {
 
       // בניית ה-URL הנכון
       let endpoint = "auth/login";
-      if (urlPath) {
-        endpoint += `/${urlPath}`;
-      }
+  
 
       const response = await POST(endpoint, userClient);
 
@@ -96,9 +53,7 @@ export default function AuthProvider({ children }: { children: ReactNode }) {
 
       setUser(response.foundUser);
 
-      // עדכון הקוקיז
-      const role = urlPath === "babysitter" ? "babysitter" : "parent";
-      Cookies.set("role", role);
+
 
       // ניווט
       navigate(`${urlPath}`);
@@ -117,8 +72,6 @@ export default function AuthProvider({ children }: { children: ReactNode }) {
       clearError();
       await POST("auth/logout");
       setUser(null);
-      Cookies.remove("auth_token");
-      Cookies.remove("role");
       navigate("/");
       return true;
     } catch (error) {
