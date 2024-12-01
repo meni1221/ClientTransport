@@ -2,17 +2,12 @@ import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 import logo from "../../assets/logo.png";
-import Cookies from "js-cookie";
 import TopNavLink from "../../components/TopNavLink";
 
 export default function Header() {
   const { user, logout } = useContext(AuthContext) ?? {};
   const [tokenRole, setTokenRole] = useState("");
 
-  useEffect(() => {
-    const role = Cookies.get("role") || "guest";
-    setTokenRole(role);
-  }, [user]);
 
   return (
     <div>
