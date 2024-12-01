@@ -101,7 +101,7 @@ export default function useFetch<T>(url: string): any {
 
   const VerifyToken = async () => {
     try {
-      const response = await fetch("http://localhost:7700/auth/verifyUser", {
+      const response = await fetch("http://localhost:7891/auth/verifyUser", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         credentials: "include",
@@ -121,16 +121,16 @@ export default function useFetch<T>(url: string): any {
     }
   };
 
-  const addComment = async (comment: IComment)=>{
-    const res = await fetch(`http://localhost:7700/${comment.id}/reviews`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
+  // const addComment = async (comment: IComment)=>{
+  //   const res = await fetch(`http://localhost:7891/${comment.id}/reviews`, {
+  //     method: "POST",
+  //     headers: { "Content-Type": "application/json" },
       
-      body: JSON.stringify(comment),
-    })
-    const data = await res.json()
-    return data
-  }
+  //     body: JSON.stringify(comment),
+  //   })
+  //   const data = await res.json()
+  //   return data
+  // }
 
-  return { data, error, GET, POST, PATCH, DELETE, GETOne, VerifyToken, addComment };
+  return { data, error, GET, POST, PATCH, DELETE, GETOne, VerifyToken };
 }
