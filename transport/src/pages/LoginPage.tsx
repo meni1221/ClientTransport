@@ -1,13 +1,13 @@
 import React, { useContext, useState, useEffect } from "react";
 import { AuthContext } from "../providers/AuthProvider";
 import PageHeader from "../components/PageHeader";
-import TopNavLink from "../components/TopNavLink";
 
 export const LoginPage = () => {
   const authContext = useContext(AuthContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [currentURL, setCurrentURL] = useState("drivers");
+  const [currentURL, setCurrentURL] = useState("currentURL");
+
   useEffect(() => {
     return () => {
       authContext!.clearError();
@@ -42,8 +42,8 @@ export const LoginPage = () => {
       <PageHeader title="Login" subtitle="Welcome to the Login page" />
       <div>
         <button
-          onClick={() => handleURLChange("users")}
-          className={currentURL === "users" ? "selected" : ""}
+          onClick={() => handleURLChange("driver")}
+          className={currentURL === "driver" ? "selected" : ""}
         >
           driver
         </button>
@@ -96,13 +96,6 @@ export const LoginPage = () => {
 
         <button type="submit">Login</button>
       </form>
-
-      <div style={{ marginTop: "10px", textAlign: "center" }}>
-        <p>
-          If you are not registered yet, please{" "}
-          <TopNavLink to="/register">register here</TopNavLink>
-        </p>
-      </div>
     </>
   );
 };
